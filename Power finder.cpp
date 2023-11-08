@@ -46,11 +46,19 @@ std::string PowerUp(std::string& numberStr, int multiplier) {
 
     return result;
 }
-
+int assign_number(std::string s){
+	int n=0;
+	for(int i=0;i<s.length();i++){
+		n*=10;
+		n+=s.at(i)-48;
+	}
+	return n;
+}
 int main() {
+	system("color a");
     std::cout << "<---Find the any power of n--->\n";
     std::string s = "";
-
+    std::string zeros = "";
     while (true) {
     std::cout << "Enter n = ";
     std::cin >> s;
@@ -58,7 +66,7 @@ int main() {
     std::cout << "Invalid input for 'n'. Please enter a valid number.\n";
     else break;
     }
-
+//    fx(s,zeros);
     std::string q = s;
 
     bool perm;
@@ -89,13 +97,13 @@ int main() {
         perm = false;
     }
 
-    int k = s[0] - '0';
+    int k = assign_number(s);
     s = "1";
-
+    
     for (int i = 1; i <= n; i++) {
         s = PowerUp(s, k);
         if (perm)
-            std::cout << q << "^" << i << ": " << s << std::endl;
+            std::cout << q << "^" << i << ": " << s << "\n";
     }
 
     if (!perm)
@@ -103,4 +111,3 @@ int main() {
 
     return 0;
 }
-
